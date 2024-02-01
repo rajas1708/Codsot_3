@@ -1,2 +1,25 @@
-# Codsot_3
-The Python Password Generator is a powerful and flexible tool designed to generate strong and random passwords for users. This application allows users to specify the desired length and complexity of the password, providing a secure and customizable solution for creating robust passwords.
+import random
+import string
+
+def generate_password(length):
+    characters = string.ascii_letters + string.digits + string.punctuation
+    password = ''.join(random.choice(characters) for _ in range(length))
+    return password
+
+def password_generator():
+    print("Password Generator")
+    
+    try:
+        length = int(input("Enter the desired length of the password: "))
+        
+        if length <= 0:
+            print("Invalid length. Please enter a positive integer.")
+        else:
+            password = generate_password(length)
+            print(f"Generated Password: {password}")
+
+    except ValueError:
+        print("Invalid input. Please enter a valid integer for the length.")
+
+if __name__ == "__main__":
+    password_generator()
